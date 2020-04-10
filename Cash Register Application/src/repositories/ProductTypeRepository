@@ -1,0 +1,67 @@
+package repositories;
+import model.ProductType;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class ProductTypeRepository {
+    private Set<ProductType> productTypes;
+
+    public ProductTypeRepository() {
+        productTypes = new TreeSet<>();
+
+    }
+
+    public Set<ProductType> getproductTypes() {
+        return productTypes;
+    }
+
+    public boolean add(ProductType pt) {
+        if (getProductTypeByName(pt.getName()) != null)
+            return false;
+        return productTypes.add(pt);
+    }
+
+    public ProductType getProductTypeByName(String name) {
+        for (ProductType pt : productTypes) {
+            if (name.equals(pt.getName()))
+                return pt;
+        }
+        return null;
+    }
+
+    public boolean remove(int id) {
+        ProductType pt = getProductTypeById(id);
+        if (pt == null)
+            return false;
+        return productTypes.remove(pt);
+    }
+
+    public ProductType getProductTypeById(int id) {
+        for (ProductType pt : productTypes) {
+            if (id == pt.getId()) {
+                return pt;
+            }
+        }
+        return null;
+    }
+
+    public boolean setProductTypeName(int id, String name) {
+        ProductType pt = getProductTypeById(id);
+        if (pt == null)
+            return false;
+        if (getProductTypeByName(name) != null)
+            return false;
+        pt.setName(name);
+        return true;
+    }
+
+    public boolean setProductTypeName(String oldName, String newName) {
+        ProductType pt = getProductTypeByName(oldName);
+        if (pt == null)
+            return false;
+        if (getProductTypeByName(newName) != null)
+            return false;
+        pt.setName(newName);
+        return true;
+    }
+}

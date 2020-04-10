@@ -1,0 +1,49 @@
+package service;
+import model.ProductType;
+import repositories.ProductTypeRepository;
+
+import java.util.Set;
+
+public class ProductTypeService {
+    private static ProductTypeService instance;
+    private ProductTypeRepository productTypeRepository;
+
+    private ProductTypeService() {
+        productTypeRepository = new ProductTypeRepository();
+    }
+
+    public static ProductTypeService getInstance() {
+        if (instance == null) {
+            instance = new ProductTypeService();
+        }
+        return instance;
+    }
+
+    public Set<ProductType> getProductTypes() {
+        return productTypeRepository.getProductTypes();
+    }
+
+    public boolean addProductType(ProductType pc) {
+        return productTypeRepository.add(pc);
+    }
+
+    public boolean removeProductType(int id) {
+        return productTypeRepository.remove(id);
+    }
+
+    public ProductType getProductTypeById(int id) {
+        return productTypeRepository.getProductTypeById(id);
+    }
+
+    public ProductType getProductTypeByName(String name) {
+        return productTypeRepository.getProductTypeByName(name);
+    }
+
+    public boolean setProductTypeName(int id, String name) {
+        return productTypeRepository.setProductTypeName(id, name);
+    }
+
+    public boolean setProductTypeName(String oldName, String newName) {
+        return productTypeRepository.setProductTypeName(oldName, newName);
+    }
+}

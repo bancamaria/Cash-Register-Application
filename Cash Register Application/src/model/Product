@@ -1,0 +1,94 @@
+package model;
+
+public class Product implements Comparable<Product> {
+    private final int id;
+    private int categoryNo;
+    private String productName;
+    private float price;
+    private float discount;
+    private int quantity;
+
+    public Product(int categoryNo, String productName, float price, int quantity) {
+        this(categoryNo, name, price, 0F, quantity);
+    }
+
+    public Product(int categoryNo, String productName, float price, float discount, int quantity) {
+        this.id = categoryNo + productName.hashCode();
+        this.name = productName;
+        this.categoryNo = categoryNo;
+        this.price = price;
+        this.discount = discount;
+        this.quantity = quantity;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getCategoryNo() {
+        return categoryNo;
+    }
+
+    public void setCategoryNo(int categoryNo) {
+        this.categoryNo = categoryNo;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(float discount) {
+        this.discount = discount;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object ob) {
+        if (this == ob)
+            return true;
+        if (ob == null || getClass() != ob.getClass())
+            return false;
+        Product product = (Product) ob;
+        return id == product.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "id: " + id + ", category: " + categoryNo + ", name: " + productName + '\'' + ", price: " + price + ", discount: " + discount + ", on stock: " + quantity + '}';
+    }
+
+    @Override
+    public int compareTo(Product product) throws NullPointerException {
+        if (product == null) {
+            throw new NullPointerException();
+        }
+        int firstOrder = Integer.compare(categoryNo, product.categoryNo);
+        if (firstOrder != 0)
+            return firstOrder;
+            else
+            return Integer.compare(id, product.id);
+    }
+}

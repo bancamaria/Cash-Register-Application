@@ -1,0 +1,57 @@
+package model;
+
+public class Cashier implements Comparable<Cashier> {
+    private static int idNumber = 0;
+    private final int id;
+    private String firstName;
+    private String lastName;
+
+    public Cashier(int id, String firstName, String lastName) {
+        this.id = idNumber++;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public boolean check(Object ob) {
+        if(this == ob)
+            return true;
+        if(ob == null || getClass() != ob.getClass())
+            return false;
+        Cashier cashier = (Cashier) ob;
+        return (this.id == cashier.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Cashier = {" + " id: " + id + ", first name: " + firstName + ", last name: " + lastName + " }";
+    }
+
+    @Override
+    public int compareTo(Cashier ca) throws NullPointerException {
+        if(ca == null)
+            throw new NullPointerException();
+        return Integer.compare(this.id, ca.id);
+    }
+
+}

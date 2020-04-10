@@ -1,0 +1,67 @@
+package main;
+import model.*;
+import service.*;
+
+public class Main {
+    public static void main(String[] args) {
+        CashierService cashierService = CashierService.getInstance();
+        cashierService.addCashier(new Cashier("Alana", "Alabama"));
+        cashierService.addCashier(new Cashier("Betty", "Bolan"));
+        cashierService.addCashier(new Cashier("Eric", "Ericsson"));
+        cashierService.addCashier(new Cashier("Mackenzie", "Miles"));
+        cashierService.addCashier(new Cashier("Zoella", "Zam"));
+
+        ProductTypeService productTypeService = ProductTypeService.getInstance();
+        productTypeService.addProductType(new ProductType("Fruit and vegetables"));
+        productTypeService.addProductType(new ProductType("Pastry"));
+        productTypeService.addProductType(new ProductType("Meat"));
+        productTypeService.addProductType(new ProductType("Milk"));
+        productTypeService.addProductType(new ProductType("Sweets"));
+
+        ProductService productService = ProductService.getInstance();
+        productService.addProduct(new Product(0, "Carrot", 4.99F, 30));
+        productService.addProduct(new Product(0, "Banana", 7.59F, 20));
+        productService.addProduct(new Product(1, "White bread", 10.69F, 30F, 10));
+        productService.addProduct(new Product(2, "Toast bread, 5.99F, 50));
+        productService.addProduct(new Product(2, "Chicken", 6.39F, 46));
+        productService.addProduct(new Product(3, "Fish", 7.99F, 35));
+        productService.addProduct(new Product(3, "Milk", 9.29F, 10F, 20));
+        productService.addProduct(new Product(4, "Soy milk", 5.49F, 20));
+        productService.addProduct(new Product(5, "Chocolate", 3.49F, 25));
+        productService.addProduct(new Product(5, "Pudding", 3.49F, 25));
+
+        CouponService couponService = CouponService.getInstance();
+        couponService.addCoupon(new Coupon(30));
+        couponService.addCoupon(new Coupon(30));
+        couponService.addCoupon(new Coupon(30));
+        couponService.addCoupon(new Coupon(30));
+        couponService.addCoupon(new Coupon(30));
+
+        ReceiptService receiptService = ReceiptService.getInstance();
+        receiptService.addReceipt(new Receipt(0, 0, -1));
+        receiptService.addReceipt(new Receipt(2, 2, 0));
+        receiptService.addReceipt(new Receipt(4, -1, -1));
+        receiptService.addReceipt(new Receipt(5, -1, 2));
+        receiptService.addReceipt(new Receipt(3, 3, -1));
+
+        SoldProductService soldProductService = SoldProductService.getInstance();
+        soldProductService.addSoldProduct(new SoldProduct(0, 63476538, 5));
+        soldProductService.addSoldProduct(new SoldProduct(0, 1982479237, 6));
+        soldProductService.addSoldProduct(new SoldProduct(1, 1485382747, 2));
+        soldProductService.addSoldProduct(new SoldProduct(2, 1802160646, 1));
+        soldProductService.addSoldProduct(new SoldProduct(2, 111220270, 2));
+        soldProductService.addSoldProduct(new SoldProduct(2, 63476538, 3));
+        soldProductService.addSoldProduct(new SoldProduct(3, 468349617, 2));
+        soldProductService.addSoldProduct(new SoldProduct(3, 312642015, 1));
+        soldProductService.addSoldProduct(new SoldProduct(3, 1982479237, 3));
+        soldProductService.addSoldProduct(new SoldProduct(3, 1850062050, 4));
+
+        System.out.println(cashierService.getCashiers());
+        System.out.println(registerService.getRegisters());
+        System.out.println(productTypeService.getProductTypes());
+        System.out.println(productService.getProducts());
+        System.out.println(couponService.getCoupons());
+        System.out.println(receiptService.getReceipts());
+        System.out.println(soldProductService.getSoldProducts());
+    }
+}
