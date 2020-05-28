@@ -1,0 +1,6 @@
+id, discount, inUse
+101,	33.0,	true
+258,	54.0,	false
+364,	20.0,	true
+964,	15.0,	false
+125,	75.0,	false
